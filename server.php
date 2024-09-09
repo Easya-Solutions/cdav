@@ -222,7 +222,7 @@ $authBackend = new DAV\Auth\Backend\BasicCallBack(function ($username, $password
 	// Authentication mode
 	// disable googlerecaptcha
 	$dolibarr_main_authentication = str_replace('googlerecaptcha','dolibarr', $dolibarr_main_authentication);
-	if (empty($dolibarr_main_authentication))
+	if (empty($dolibarr_main_authentication)|| $dolibarr_main_authentication == 'openid_connect')
 		$dolibarr_main_authentication='http,dolibarr';
 	$authmode = explode(',',$dolibarr_main_authentication);
 	$entity = (GETPOST('entity','int') ? GETPOST('entity','int') : (!empty($conf->entity) ? $conf->entity : 1));
